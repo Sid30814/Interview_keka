@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Service
@@ -18,19 +19,29 @@ public class SampleService {
     public SampleService(InMemoryStorage storage) {
         this.storage = storage;
     }
-
-    public SampleResponse processRequest(SampleRequest request) {
-        if (request == null || request.name() == null || request.name().isBlank()) {
-            throw new IllegalArgumentException("Name must not be empty");
+        public SampleRequest placeorder(SampleRequest request ){
+        if(request == null || request.empid()==null || request.items()==null){
+throw new IllegalArgumentException("invalid null value");
         }
-        if (request.value() < 0) {
-            throw new IllegalArgumentException("Value must be non-negative");
+        if(Storage(menuvalid(empid,itemsid))) return menuvalid(empid,itemsid), ,""
+        String empid = request.empid();
+        ArrayList<String> itemsid = request.itemsid();
+        return itemsid , Storage.map.of((total(empid,itemsid),Storage.map.of(menu(empid,itemsid)),Storage.map.of(iforderplaces(status))
         }
 
-        String id = UUID.randomUUID().toString();
-        storage.save(id, request);
-        log.info("Saved record with id={} to in-memory storage", id);
 
-        return new SampleResponse("OK", "Saved " + request.name() + " with ID: " + id);
-    }
+//    public SampleResponse processRequest(SampleRequest request) {
+//        if (request == null || request.name() == null || request.name().isBlank()) {
+//            throw new IllegalArgumentException("Name must not be empty");
+//        }
+//        if (request.value() < 0) {
+//            throw new IllegalArgumentException("Value must be non-negative");
+//        }
+//
+//        String id = UUID.randomUUID().toString();
+//        storage.save(id, request);
+//        log.info("Saved record with id={} to in-memory storage", id);
+//
+//        return new SampleResponse("OK", "Saved " + request.name() + " with ID: " + id);
+//    }
 }
