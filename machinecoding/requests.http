@@ -1,0 +1,11 @@
+### GET endpoint — returns JSON
+GET http://localhost:8000/api/test
+
+### POST endpoint — reads JSON body, returns JSON
+POST http://localhost:8000/api/test
+Content-Type: application/json
+
+{
+  "name": "Pankaj",
+  "value": 42
+}
